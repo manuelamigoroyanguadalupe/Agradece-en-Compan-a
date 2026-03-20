@@ -16,3 +16,17 @@ VALUES
 ('Maria Lopez', 'maria@gmail.com', 'maria2024', 'www.maria.com', 'Jesuita2', 0x5678, 'Buenas soy Maria'),
 
 ('Carlos Ruiz', 'carlos@gmail.com', 'carlos99', 'www.carlos.com', 'Jesuita3', 0x9ABC, 'Hey soy Carlos');
+
+
+CREATE TABLE Agradecimientos(
+
+    id_agradecimiento SMALLINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_remitente TINYINT NOT NULL,
+    id_destinatario TINYINT NOT NULL,
+    mensaje VARCHAR(1500) NOT NULL,
+ 
+FOREIGN KEY (id_remitente) REFERENCES Alumnos(id_alumno)
+FOREIGN KEY (id_destinatario) REFERENCES Alumnos(id_alumno)
+
+);
+

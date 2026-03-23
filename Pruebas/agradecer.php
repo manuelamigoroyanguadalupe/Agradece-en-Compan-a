@@ -49,10 +49,9 @@ function selectAgradecer(){
         </nav>
     
     <form method="GET" action="mostrar_datos.php">
-                <!-- <option value="">Compañeros</option>
-                <option value ="compañero1">Compañero 1</option>
-                <option value ="compañero2">Compañero 2</option>
-                <option value ="compañero3">Compañero 3</option> -->
+            <select>
+                <option value="0"></option>
+                
             </select><br><br>
             <label for="mensaje">Mensaje de agradecimiento:</label><br>
             <textarea id="mensaje" name="mensaje" rows="13" cols="109" required></textarea><br><br>

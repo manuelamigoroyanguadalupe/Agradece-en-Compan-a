@@ -1,6 +1,6 @@
 <php?
     requiere 'configdb.php';
-    
+    conectar();
 <while ($fila = $resultado->fetch_Array(){
                     echo '<option value="' .$fila["idAlumno"]. "'> echo '<option value="' .$fila["nombre"]. "'> - '$fila["idAlumno"].'</option>';
     }>

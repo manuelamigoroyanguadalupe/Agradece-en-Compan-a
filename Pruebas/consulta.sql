@@ -26,7 +26,7 @@ CREATE TABLE Agradecimientos(
     mensaje VARCHAR(1500) NOT NULL,
 
 UNIQUE (id_remitente, id_destinatario), 
-FOREIGN KEY (id_remitente) REFERENCES Alumnos(id_alumno)
+FOREIGN KEY (id_remitente) REFERENCES Alumnos(id_alumno),
 FOREIGN KEY (id_destinatario) REFERENCES Alumnos(id_alumno)
 
 );

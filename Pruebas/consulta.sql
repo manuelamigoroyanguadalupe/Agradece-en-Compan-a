@@ -1,5 +1,5 @@
 CREATE TABLE Alumnos (
-    id_alumno TINYINT AUTO_INCREMENT PRIMARY KEY,
+    id_alumno TINYINT IDENTITY(1,1) PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
     Email VARCHAR(120) NOT NULL,
     Contraseña CHAR(20),
@@ -20,13 +20,13 @@ VALUES
 
 CREATE TABLE Agradecimientos(
 
-    id_agradecimiento SMALLINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_agradecimiento SMALLINT IDENTITY(1,1) PRIMARY KEY NOT NULL,
     id_remitente TINYINT NOT NULL,
     id_destinatario TINYINT NOT NULL,
     mensaje VARCHAR(1500) NOT NULL,
- 
+
+UNIQUE (id_remitente, id_destinatario), 
 FOREIGN KEY (id_remitente) REFERENCES Alumnos(id_alumno)
 FOREIGN KEY (id_destinatario) REFERENCES Alumnos(id_alumno)
 
 );
-

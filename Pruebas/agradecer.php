@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['puesto'])){
+    header("Location: ini_ses.html");
+    exit();
+}
 
 require 'configdb.php';
 
@@ -65,7 +71,6 @@ function selectmultiple(){
             <p>Recuerda que tu mensaje de agradecimiento será anónimo, así que siéntete libre de expresar tu gratitud de manera sincera y positiva. ¡Tu compañero/a se lo agradecerá mucho!</p>
             <input type="submit" value="Enviar">
         </fieldset>
-        
            
     </form>
 </body>

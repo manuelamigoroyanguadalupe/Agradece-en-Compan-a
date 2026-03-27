@@ -2,13 +2,9 @@
 session_start();
 require_once 'conexion.php';
 
-
 // 🔹 Obtener el equipo del usuario logueado (receptor)
 $usuario = $_SESSION['usuario'];
-$stmt = $conexion->prepare("SELECT equipo FROM alumnos WHERE usuario = ?");
-$stmt->bind_param("s", $usuario);
-$stmt->execute();
-$result = $stmt->get_result();
+$result = $conexion->query("SELECT equipo FROM alumnos WHERE usuario = '$usuario'");
 $fila = $result->fetch_assoc();
 
 if (!$fila) {
@@ -26,14 +22,21 @@ $sql = "SELECT
         FROM agradecimientos a
         JOIN alumnos em ON a.idEmisor = em.equipo
         JOIN alumnos rec ON a.idReceptor = rec.equipo
-        WHERE a.idReceptor = ?
+        WHERE a.idReceptor = '$idUsuario'
         ORDER BY a.fecha_hora DESC";
 
-$stmt = $conexion->prepare($sql);
-$stmt->bind_param("s", $idUsuario);
-$stmt->execute();
-$resultado = $stmt->get_result();
+$resultado = $conexion->query($sql);
 
+// 🔹 Mostrar resultados
+if ($resultado->num_rows > 0) {
+    while ($fila = $resultado->fetch_assoc()) {
+        echo "<p><strong>De:</strong> ".$fila['nombreJesuita']." (".$fila['infoJesuita'].")<br>";
+        echo "<strong>Mensaje:</strong> ".$fila['mensaje']."<br>";
+        echo "<strong>Para:</strong> ".$fila['nombreReceptor']."</p><hr>";
+    }
+} else {
+    echo "No tienes agradecimientos.";
+}
 ?>
 
 <!DOCTYPE html>
